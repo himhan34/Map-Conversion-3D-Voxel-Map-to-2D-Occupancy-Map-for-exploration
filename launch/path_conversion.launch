@@ -1,12 +1,32 @@
-<launch>
+<launch>  <!-- Launch 파일의 시작 -->
 	<node pkg="mapconversion" type="path_converter_node" name="path_converter" respawn="false" output="screen">
+	    <!-- "mapconversion" 패키지의 "path_converter_node" 실행 파일을 노드로 실행 -->
+	    <!-- 노드 이름은 "path_converter"로 설정 -->
+	    <!-- "respawn" 속성을 false로 설정하여 노드가 죽었을 때 재시작하지 않음 -->
+	    <!-- "output"을 "screen"으로 설정하여 출력이 화면에 표시되도록 설정 -->
+
 	    <remap from="pathIn" to="/path" />
+	    <!-- "pathIn" 토픽을 "/path"로 리맵 -->
+	    <!-- 입력 경로 데이터를 "/path" 토픽에서 수신 -->
+
 	    <remap from="pathOut" to="/path_3d" />
-	    <!-- Use true for UAVs and false for UGVs -->
+	    <!-- "pathOut" 토픽을 "/path_3d"로 리맵 -->
+	    <!-- 변환된 3D 경로 데이터를 "/path_3d" 토픽으로 출력 -->
+
+	    <!-- UAV(무인 항공기)와 UGV(무인 지상 차량)를 구분하는 설정 -->
 	    <param name="use_collision_sphere" value="true" />
-	    <!-- Not used by if use_collision_sphere is false -->
+	    <!-- true: UAV용, false: UGV용으로 설정 -->
+
+	    <!-- use_collision_sphere가 false일 경우에는 사용되지 않음 -->
 	    <param name="collision_radius" value="0.50" />
+	    <!-- 충돌 구의 반경을 0.50m로 설정 -->
+
 	    <param name="path_offset" value="1" />
+	    <!-- 경로 오프셋을 1로 설정 -->
+	    <!-- 경로의 높이 또는 위치를 일정하게 변경하는 데 사용될 가능성이 있음 -->
+
 	    <param name="path_smothing_length" value="20" />
+	    <!-- 경로를 부드럽게 만드는 데 사용될 길이를 20으로 설정 -->
+	    <!-- 경로의 곡률이나 노이즈를 제거하는 데 사용 -->
 	</node>
-</launch>
+</launch> <!-- Launch 파일의 끝 -->
