@@ -1,10 +1,31 @@
-<launch>
+<launch>  <!-- Launch 파일의 시작 -->
 	<node pkg="mapconversion" type="map_conversion_oct_node" name="map_conversion" respawn="false" output="screen"> 
+	    <!-- "mapconversion" 패키지의 "map_conversion_oct_node" 실행 파일을 노드로 실행 -->
+	    <!-- 노드 이름은 "map_conversion"으로 설정 -->
+	    <!-- "respawn" 속성을 false로 설정하여 노드가 죽었을 때 재시작하지 않음 -->
+	    <!-- "output"을 "screen"으로 설정하여 출력이 화면에 표시되도록 설정 -->
+
 	    <remap from="octomap" to="octomap_binary" />
+	    <!-- "octomap" 토픽을 "octomap_binary"로 리맵 -->
+
 	    <param name="minimum_z" value="1" />
+	    <!-- 매개변수 "minimum_z"의 값을 1로 설정 -->
+	    <!-- 이 값은 맵 변환에서 고려할 최소 Z 값을 나타낼 가능성이 있음 -->
+
 	    <param name="minimum_occupancy" value="10" />
+	    <!-- 매개변수 "minimum_occupancy"의 값을 10으로 설정 -->
+	    <!-- 이 값은 점유 여부를 판단할 최소 점유 수준을 나타낼 가능성이 있음 -->
+
 	    <param name="map_frame" value="map"/>
+	    <!-- 매개변수 "map_frame"의 값을 "map"으로 설정 -->
+	    <!-- 맵 변환이 사용할 기준 프레임 ID를 나타냄 -->
+
 	    <param name="max_slope_ugv" value="0.2" />
+	    <!-- 매개변수 "max_slope_ugv"의 값을 0.2로 설정 -->
+	    <!-- UGV(무인 지상 차량)가 허용할 최대 경사 값을 나타낼 가능성이 있음 -->
+
 	    <param name="slope_estimation_size" value="2" />
+	    <!-- 매개변수 "slope_estimation_size"의 값을 2로 설정 -->
+	    <!-- 경사 추정을 위한 주변 영역의 크기를 나타낼 가능성이 있음 -->
 	</node>
-</launch>
+</launch> <!-- Launch 파일의 끝 -->
